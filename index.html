@@ -1,192 +1,213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bathke.me</title>
-
-    <style>
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-        background: #f8f9fb;
-        color: #1a1a1a;
-        line-height: 1.6;
-    }
-
-    .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: auto;
-    }
-
-    header {
-        padding: 30px 0;
-    }
-
-    .logo {
-        font-weight: 700;
-        font-size: 1.2rem;
-    }
-
-    .hero {
-        padding: 100px 0;
-        text-align: center;
-    }
-
-    .hero h1 {
-        font-size: 4rem;
-        margin-bottom: 20px;
-    }
-
-    .hero p {
-        max-width: 700px;
-        margin: auto;
-        color: #666;
-        font-size: 1.2rem;
-    }
-
-    .section {
-        padding: 80px 0;
-    }
-
-    .section h2 {
-        margin-bottom: 30px;
-        font-size: 2rem;
-    }
-
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-        gap: 24px;
-    }
-
-    .card {
-        background: white;
-        border-radius: 20px;
-        padding: 25px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-    }
-
-    .card h3 {
-        margin-bottom: 12px;
-    }
-
-    .highlight {
-        border: 2px solid #00a8a8;
-    }
-
-    footer {
-        text-align: center;
-        padding: 60px 0;
-        color: #666;
-    }
-
-    @media(max-width:768px){
-
-        .hero h1 {
-            font-size: 2.5rem;
-        }
-
-    }
-
-    </style>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christian Bathke – Gemeinsam die Welt ein Stück besser machen</title>
+<meta name="description" content="Christian Bathke: Autor, Mediator und Berater für agiles Arbeiten und Organisationsentwicklung. Gemeinsam die Welt ein Stück besser machen.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <div class="logo">
-            BATHKE.ME
-        </div>
-    </div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html">Christian <span>Bathke</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menü</button>
+    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+      <a href="index.html" aria-current="page">Start</a>
+      <a href="buecher.html">Bücher</a>
+      <a href="mediation.html">Mediation</a>
+      <a href="beratung.html">Beratung</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="ueber-mich.html">Über mich</a>
+      <a class="nav-cta" href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
 </header>
 
-<section class="hero">
-    <div class="container">
-
-        <h1>Ideen werden zu Projekten.</h1>
-
-        <p>
-            Bücher, digitale Produkte und neue Konzepte.
-            Hier entstehen Projekte, die Menschen inspirieren,
-            unterstützen und zum Nachdenken anregen.
-        </p>
-
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Autor · Mediator · Berater</p>
+      <h1>Gemeinsam die Welt ein Stück besser machen.</h1>
+      <p class="lead">Mit Geschichten, die berühren. Mit Gesprächen, die Konflikte lösen. Und mit Organisationen, in denen der Mensch im Mittelpunkt steht.</p>
+      <div class="actions">
+        <a class="btn" href="kontakt.html">Erstgespräch vereinbaren</a>
+        <a class="btn ghost" href="buecher.html">Meine Bücher</a>
+      </div>
     </div>
+    <a class="cover-fan" href="buecher.html" aria-label="Zu meinen Büchern">
+      <img src="assets/cover-leer.jpg" alt="Cover: LEER">
+      <img src="assets/cover-sternenstaubtraeume.jpg" alt="Cover: Sternenstaubträume">
+      <img src="assets/cover-aus-tradition-wird-zukunft.jpg" alt="Cover: aus Tradition wird Zukunft">
+    </a>
+  </div>
+</div>
+
+<section class="soft">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Was ich mache</h2>
+      <p>Vier Wege, ein Ziel: Menschen stärken, Verbindungen schaffen und Veränderung möglich machen – im Kleinen wie im Großen.</p>
+    </div>
+    <div class="grid four">
+      <a class="card" href="buecher.html">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6.5A2.5 2.5 0 0 0 4 21.5 2.5 2.5 0 0 0 6.5 24H19"/><path d="M8 7h7M8 11h5"/></svg></div>
+        <h3>Bücher</h3>
+        <p>Gute-Nacht-Geschichten für Kinder, ein Roman über Wandel und ein stiller Text über Einsamkeit.</p>
+        <span class="link-arrow">Zu den Büchern</span>
+      </a>
+      <a class="card" href="mediation.html">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3 2.2-5 5-5s5 2 5 5M12 20c0-3 2.2-5 5-5s5 2 5 5"/></svg></div>
+        <h3>Mediation</h3>
+        <p>Konflikte lösen, damit Menschen wieder gut miteinander leben und arbeiten können.</p>
+        <span class="link-arrow">Mehr zur Mediation</span>
+      </a>
+      <a class="card" href="beratung.html">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
+        <h3>Beratung</h3>
+        <p>Agiles Arbeiten und Organisationsentwicklung, die nachhaltig wirkt – mit dem Menschen im Mittelpunkt.</p>
+        <span class="link-arrow">Mehr zur Beratung</span>
+      </a>
+      <a class="card" href="projekte.html">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18h2"/></svg></div>
+        <h3>Projekte</h3>
+        <p>Digitale Helfer wie die Budget-App bubli – einfach, privat und alltagstauglich.</p>
+        <span class="link-arrow">Zu den Projekten</span>
+      </a>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-    <div class="container">
-
-        <h2>Projekte</h2>
-
-        <div class="grid">
-
-            <div class="card highlight">
-                <h3>📱 Budget-App</h3>
-                <p>
-                    Deine Finanzen im Blick. Einfach, lokal und privat.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>📖 LEER</h3>
-                <p>
-                    Ein Roman über Einsamkeit und Menschlichkeit.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>📖 aus Tradition wird Zukunft</h3>
-                <p>
-                    Ein Roman über Wandel und neue Wege.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>📖 Sternenstaubträume</h3>
-                <p>
-                    Geschichten voller Fantasie und kleiner Wunder.
-                </p>
-            </div>
-
-        </div>
-
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Bücher</p>
+      <h2>Meine Bücher</h2>
+      <p>Drei Bücher, drei ganz unterschiedliche Welten – erschienen bei tredition und überall im Buchhandel erhältlich.</p>
     </div>
+    <div class="grid three">
+      <a class="book-tile" href="buecher.html#sternenstaubtraeume">
+        <div class="cover has-img"><img src="assets/cover-sternenstaubtraeume.jpg" alt="Cover: Sternenstaubträume – 10 Kurzgeschichten zum Vorlesen" loading="lazy"></div>
+        <h3>Sternenstaubträume</h3>
+        <p>Kinderbuch · 10 Gute-Nacht-Geschichten über Mut, Freundschaft und Respekt.</p>
+      </a>
+      <a class="book-tile" href="buecher.html#aus-tradition-wird-zukunft">
+        <div class="cover has-img"><img src="assets/cover-aus-tradition-wird-zukunft.jpg" alt="Cover: aus Tradition wird Zukunft – Ein Roman über Veränderungen" loading="lazy"></div>
+        <h3>aus Tradition wird Zukunft</h3>
+        <p>Roman · Ein Familienbetrieb wagt neue Wege der Zusammenarbeit.</p>
+      </a>
+      <a class="book-tile" href="buecher.html#leer">
+        <div class="cover has-img"><img src="assets/cover-leer.jpg" alt="Cover: LEER – Ein Alltag, den niemand sieht" loading="lazy"></div>
+        <h3>LEER</h3>
+        <p>Literarischer Monolog · Über Einsamkeit mitten im funktionierenden Leben.</p>
+      </a>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-    <div class="container">
-
-        <h2>Aktuell</h2>
-
-        <div class="card">
-            <h3>🚀 Bubli</h3>
-
-            <p>
-                Ein neues Projekt befindet sich aktuell im Aufbau.
-            </p>
-
-        </div>
-
+<section class="soft">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <p class="eyebrow">Mediation</p>
+      <h2>Konflikte lösen. Menschen glücklich machen.</h2>
+      <p>Streit kostet Kraft, Schlaf und oft auch Beziehungen. In der Mediation finden Sie gemeinsam eine Lösung, mit der alle Beteiligten gut leben können – und wieder nach vorn schauen.</p>
+      <ul class="checks">
+        <li>Familie, Partnerschaft und Erbschaft</li>
+        <li>Konflikte im Team und am Arbeitsplatz</li>
+        <li>Nachbarschaft und Vereine</li>
+      </ul>
+      <a class="link-arrow" href="mediation.html">So läuft eine Mediation ab</a>
     </div>
+    <div>
+      <p class="eyebrow">Beratung</p>
+      <h2>Veränderung, die bleibt.</h2>
+      <p>Agilität ist kein Methodenkoffer, sondern eine Haltung. Ich begleite Teams und Organisationen dabei, Zusammenarbeit neu zu denken – nachhaltig, praxisnah und mit dem Menschen im Mittelpunkt.</p>
+      <ul class="checks">
+        <li>Agiles Arbeiten in Teams einführen und verankern</li>
+        <li>Organisationsentwicklung und Veränderungsprozesse</li>
+        <li>Führung, Zusammenarbeit und Teamkultur</li>
+      </ul>
+      <a class="link-arrow" href="beratung.html">Mein Beratungsangebot</a>
+    </div>
+  </div>
 </section>
 
-<footer>
+<section>
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Projekt</p>
+      <h2>bubli – dein einfacher Budget-Begleiter</h2>
+      <p>Eine iPhone-App, die mit einer Farbe zeigt, ob man im Budget ist. Ohne Konto, ohne Werbung, ohne Abo – die Daten bleiben auf dem iPhone.</p>
+      <a class="btn ghost" href="bubli/">Zur App-Seite</a>
+    </div>
+    <div class="app-teaser card" style="flex-direction:row">
+      <img src="bubli/icon.png" alt="App-Symbol von bubli">
+      <div>
+        <h3>bubli</h3>
+        <p style="margin:0">Budget auf einen Blick. Bald im App Store.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <p>
-        Christian Bathke · christian@bathke.me
-    </p>
+<section class="soft">
+  <div class="wrap">
+    <blockquote class="quote">
+      „Die Welt wird nicht von Einzelnen besser gemacht – sondern von Menschen, die einander zuhören.“
+      <cite>Christian Bathke</cite>
+    </blockquote>
+  </div>
+</section>
 
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h2>Lassen Sie uns sprechen</h2>
+        <p>Ein erstes Gespräch ist unverbindlich – telefonisch, online oder vor Ort.</p>
+      </div>
+      <a class="btn" href="kontakt.html">Kontakt aufnehmen</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="logo" href="index.html">Christian <span>Bathke</span></a>
+        <p style="margin-top:12px">Autor, Mediator und Berater.<br>Gemeinsam die Welt ein Stück besser machen.</p>
+      </div>
+      <div>
+        <h4>Angebote</h4>
+        <ul>
+          <li><a href="buecher.html">Bücher</a></li>
+          <li><a href="mediation.html">Mediation</a></li>
+          <li><a href="beratung.html">Beratung</a></li>
+          <li><a href="projekte.html">Projekte &amp; bubli</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="kontakt.html">Kontakt aufnehmen</a></li>
+          <li><a href="ueber-mich.html">Über mich</a></li>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Christian Bathke</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </div>
 </footer>
 
+<script src="assets/site.js"></script>
 </body>
 </html>
