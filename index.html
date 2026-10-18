@@ -4,35 +4,189 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bathke.me</title>
+
+    <style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #f8f9fb;
+        color: #1a1a1a;
+        line-height: 1.6;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    header {
+        padding: 30px 0;
+    }
+
+    .logo {
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+
+    .hero {
+        padding: 100px 0;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        max-width: 700px;
+        margin: auto;
+        color: #666;
+        font-size: 1.2rem;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .section h2 {
+        margin-bottom: 30px;
+        font-size: 2rem;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+        gap: 24px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    .card h3 {
+        margin-bottom: 12px;
+    }
+
+    .highlight {
+        border: 2px solid #00a8a8;
+    }
+
+    footer {
+        text-align: center;
+        padding: 60px 0;
+        color: #666;
+    }
+
+    @media(max-width:768px){
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+    }
+
+    </style>
+
 </head>
 <body>
 
-<h1>Bathke.me</h1>
+<header>
+    <div class="container">
+        <div class="logo">
+            BATHKE.ME
+        </div>
+    </div>
+</header>
 
-<p>Ideen werden zu Projekten.</p>
+<section class="hero">
+    <div class="container">
 
-<p>
-Bücher, digitale Produkte und neue Konzepte.
-Hier entstehen Projekte, die Menschen inspirieren,
-unterstützen und zum Nachdenken anregen.
-</p>
+        <h1>Ideen werden zu Projekten.</h1>
 
-<h2>Projekte</h2>
+        <p>
+            Bücher, digitale Produkte und neue Konzepte.
+            Hier entstehen Projekte, die Menschen inspirieren,
+            unterstützen und zum Nachdenken anregen.
+        </p>
 
-<ul>
-    <li>📱 Budget-App</li>
-    <li>📖 LEER</li>
-    <li>📖 aus Tradition wird Zukunft</li>
-    <li>📖 Sternenstaubträume</li>
-</ul>
+    </div>
+</section>
 
-<h2>Aktuell</h2>
+<section class="section">
+    <div class="container">
 
-<p>Bubli befindet sich aktuell in Entwicklung.</p>
+        <h2>Projekte</h2>
 
-<h2>Kontakt</h2>
+        <div class="grid">
 
-<p>christian@bathke.me</p>
+            <div class="card highlight">
+                <h3>📱 Budget-App</h3>
+                <p>
+                    Deine Finanzen im Blick. Einfach, lokal und privat.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📖 LEER</h3>
+                <p>
+                    Ein Roman über Einsamkeit und Menschlichkeit.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📖 aus Tradition wird Zukunft</h3>
+                <p>
+                    Ein Roman über Wandel und neue Wege.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📖 Sternenstaubträume</h3>
+                <p>
+                    Geschichten voller Fantasie und kleiner Wunder.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <h2>Aktuell</h2>
+
+        <div class="card">
+            <h3>🚀 Bubli</h3>
+
+            <p>
+                Ein neues Projekt befindet sich aktuell im Aufbau.
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+<footer>
+
+    <p>
+        Christian Bathke · christian@bathke.me
+    </p>
+
+</footer>
 
 </body>
 </html>
