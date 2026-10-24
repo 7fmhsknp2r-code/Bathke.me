@@ -46,6 +46,12 @@ body {
 a { color: var(--green); }
 .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
 
+/* Leiste zurück zur Homepage */
+.backbar { background: #13201e; font-size: 14px; }
+.backbar .wrap { display: flex; justify-content: space-between; align-items: center; height: 40px; }
+.backbar a { color: #e8ece9; text-decoration: none; font-weight: 500; }
+.backbar a:hover { color: #8fd1c7; }
+
 /* Kopfzeile */
 header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: var(--text); text-decoration: none; }
@@ -140,6 +146,13 @@ html[lang="de"] [lang="en"], html[lang="en"] [lang="de"] { display: none !import
 </style>
 </head>
 <body>
+
+<div class="backbar">
+  <div class="wrap">
+    <a href="/apps">← <span lang="de">Christian Bathke · Alle Apps</span><span lang="en">Christian Bathke · All apps</span></a>
+    <a href="/"><span lang="de">Zur Homepage</span><span lang="en">Home</span></a>
+  </div>
+</div>
 
 <header>
   <div class="wrap">
