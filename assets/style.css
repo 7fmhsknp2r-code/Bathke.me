@@ -15,6 +15,8 @@
   --todo-bg: #fff3c4;
   --todo-line: #d9a400;
   --radius: 24px;
+  --wrap: 1680px;
+  --gutter: clamp(20px, 6vw, 120px);
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
@@ -53,8 +55,9 @@ h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 14px; }
 h3 { font-size: 22px; margin: 0 0 8px; }
 p { margin: 0 0 14px; }
 
-.wrap { max-width: 1320px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px); }
-.narrow { max-width: 760px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+/* Schmale Textblöcke stehen linksbündig im breiten Raster statt als Spalte in der Mitte */
+.wrap.narrow > * { max-width: 860px; }
 
 /* Platzhalter – gut sichtbar, damit nichts vergessen wird */
 .todo {
@@ -170,7 +173,7 @@ p { margin: 0 0 14px; }
 .trustbar { position: relative; z-index: 2; margin-top: -80px; padding-bottom: 24px; }
 .trustbar .wrap {
   display: grid; grid-template-columns: repeat(4, 1fr);
-  max-width: 1176px; width: calc(100% - 2 * clamp(16px, 4vw, 72px)); padding: 8px clamp(20px, 3vw, 40px);
+  max-width: calc(var(--wrap) - 2 * 120px); width: calc(100% - 2 * var(--gutter)); padding: 8px clamp(20px, 3vw, 40px);
   background: var(--surface); border-radius: 28px; box-shadow: 0 30px 60px -34px rgba(0,0,0,0.45);
 }
 .trustbar .wrap > div { padding: 26px 20px; border-left: 1px solid var(--line); }
@@ -206,8 +209,6 @@ p { margin: 0 0 14px; }
 /* Unterseiten-Kopf */
 .page-hero { padding: 64px 0 40px; }
 .page-hero .lead { margin-bottom: 0; }
-.page-hero .wrap.narrow { max-width: 1320px; }
-.page-hero .wrap.narrow > * { max-width: 880px; }
 
 /* ---------- Abschnitte ---------- */
 section { padding: 80px 0; }
@@ -274,7 +275,7 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .cover.c3 { background: linear-gradient(160deg, #3d4a6b, #232b40); }
 
 .book-tile { text-decoration: none; color: inherit; }
-.book-tile .cover { margin-bottom: 18px; max-width: 280px; transition: transform 0.25s; }
+.book-tile .cover { margin-bottom: 18px; max-width: 320px; transition: transform 0.25s; }
 .book-tile:hover .cover { transform: translateY(-4px) rotate(-1deg); }
 .book-tile h3 { font-size: 20px; margin-bottom: 4px; }
 .book-tile p { color: var(--text-2); font-size: 15px; margin: 0; }

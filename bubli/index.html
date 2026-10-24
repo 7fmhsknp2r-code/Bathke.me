@@ -6,6 +6,7 @@
 <title>bubli – dein einfacher Budget-Begleiter</title>
 <meta name="description" content="bubli zeigt dir mit einer Farbe, ob du im Budget bist. Ohne Konto, ohne Werbung, ohne Abo – deine Daten bleiben auf deinem iPhone.">
 <link rel="canonical" href="https://bathke.me/bubli/">
+<meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:title" content="bubli – dein einfacher Budget-Begleiter">
 <meta property="og:description" content="Eine Farbe zeigt, ob du im Budget bist. Ohne Konto, ohne Werbung, ohne Abo – deine Daten bleiben auf deinem iPhone.">
@@ -15,134 +16,199 @@
 <link rel="icon" type="image/png" href="icon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
+/* bubli – Produktseite im dunklen Stil. Eigenständig, ohne das Stylesheet der Hauptseite. */
 :root {
-  color-scheme: light dark;
   --green: #00a652;
   --yellow: #d99e00;
   --red: #d12e2e;
   --gray: #737378;
-  --bg: #ffffff;
-  --bg-soft: #f4f6f5;
-  --text: #1c1c1e;
-  --text-2: #5f6368;
-  --line: #e3e6e4;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #111312;
-    --bg-soft: #1b1e1c;
-    --text: #f2f2f4;
-    --text-2: #a1a5a9;
-    --line: #2a2e2c;
-  }
+  --state: var(--green);
+  --text: #f5f5f7;
+  --text-2: #a1a1a6;
+  --text-3: #6e6e73;
+  --card: #111113;
+  --line: #1d1d1f;
+  --display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --rounded: ui-rounded, "SF Pro Rounded", -apple-system, sans-serif;
+  color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-}
-a { color: var(--green); }
-.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
-
-/* Leiste zurück zur Homepage */
-.backbar { background: #13201e; font-size: 14px; }
-.backbar .wrap { display: flex; justify-content: space-between; align-items: center; height: 40px; }
-.backbar a { color: #e8ece9; text-decoration: none; font-weight: 500; }
-.backbar a:hover { color: #8fd1c7; }
-
-/* Kopfzeile */
-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: var(--text); text-decoration: none; }
-.brand img { width: 32px; height: 32px; border-radius: 8px; }
-.lang { display: flex; gap: 4px; }
-.lang button {
-  font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
-  background: none; border: 1px solid var(--line); color: var(--text-2);
-  border-radius: 999px; padding: 4px 12px;
-}
-.lang button[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: #fff; }
-
-/* Hero */
-.hero { padding: 48px 0 72px; }
-.hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
-.hero h1 { font-size: clamp(36px, 6vw, 56px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 18px; }
-.hero h1 span { color: var(--green); }
-.hero p.lead { font-size: 20px; color: var(--text-2); margin: 0 0 28px; max-width: 30em; }
-.badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
-.badge { font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--line); }
-.cta {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--text); color: var(--bg); text-decoration: none;
-  font-weight: 600; padding: 14px 22px; border-radius: 14px;
-}
-.cta small { display: block; font-size: 12px; font-weight: 500; opacity: 0.75; }
-.soon { margin-top: 10px; font-size: 14px; color: var(--text-2); }
-
-/* iPhone-Vorschau */
-.phone {
-  justify-self: center;
-  width: 260px; aspect-ratio: 9 / 19.5;
-  border-radius: 44px; padding: 12px;
-  background: #1c1c1e;
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.35);
-}
-.screen {
-  height: 100%; border-radius: 34px;
-  background: var(--green); color: #fff;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; transition: background-color 0.8s ease;
-}
-.screen .label { font-size: 13px; opacity: 0.85; }
-.screen .amount { font: 700 44px/1.1 ui-rounded, "SF Pro Rounded", -apple-system, sans-serif; font-variant-numeric: tabular-nums; margin: 6px 0; }
-.screen .of { font-size: 13px; opacity: 0.85; }
-.screen .status { margin-top: 22px; font-size: 13px; font-weight: 600; background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 999px; }
-
-/* Abschnitte */
-section { padding: 72px 0; }
-section.soft { background: var(--bg-soft); }
-h2 { font-size: clamp(28px, 4vw, 38px); letter-spacing: -0.01em; margin: 0 0 12px; }
-.sub { color: var(--text-2); margin: 0 0 40px; max-width: 36em; }
-.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.card { background: var(--bg); border: 1px solid var(--line); border-radius: 20px; padding: 24px; }
-section:not(.soft) .card { background: var(--bg-soft); }
-.card .ico { font-size: 28px; margin-bottom: 10px; }
-.card h3 { margin: 0 0 6px; font-size: 19px; }
-.card p { margin: 0; color: var(--text-2); }
-
-/* Ampel */
-.lights { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.light { border-radius: 20px; padding: 22px; color: #fff; }
-.light h3 { margin: 0 0 4px; font-size: 19px; }
-.light p { margin: 0; opacity: 0.9; font-size: 15px; }
-
-/* FAQ */
-details { border-bottom: 1px solid var(--line); padding: 16px 0; }
-details summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
-details summary::-webkit-details-marker { display: none; }
-details summary::after { content: "+"; color: var(--green); font-size: 22px; line-height: 1; }
-details[open] summary::after { content: "–"; }
-details p { margin: 10px 0 0; color: var(--text-2); }
-.faq { max-width: 760px; }
-
-/* Fußzeile */
-footer { padding: 40px 0 56px; border-top: 1px solid var(--line); color: var(--text-2); font-size: 15px; }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; }
-footer nav { display: flex; flex-wrap: wrap; gap: 20px; }
-footer a { text-decoration: none; font-weight: 600; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #000; color: var(--text); font: 17px/1.5 var(--display); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
+h1, h2, h3 { margin: 0; letter-spacing: -0.025em; font-weight: 700; }
+p { margin: 0; }
 
 /* Sprachumschaltung */
 html[lang="de"] [lang="en"], html[lang="en"] [lang="de"] { display: none !important; }
 
-@media (max-width: 820px) {
-  .hero .wrap { grid-template-columns: 1fr; text-align: center; }
-  .hero p.lead { margin-left: auto; margin-right: auto; }
-  .badges { justify-content: center; }
-  .grid { grid-template-columns: 1fr; }
-  .lights { grid-template-columns: 1fr 1fr; }
+/* Leiste zurück zur Homepage */
+.backbar { font-size: 13px; border-bottom: 1px solid var(--line); }
+.backbar .wrap { display: flex; justify-content: space-between; align-items: center; height: 38px; }
+.backbar a { color: var(--text-2); text-decoration: none; }
+.backbar a:hover { color: var(--text); }
+
+/* Navigation */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(0,0,0,0.72); backdrop-filter: saturate(1.8) blur(20px); -webkit-backdrop-filter: saturate(1.8) blur(20px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 19px; text-decoration: none; }
+.brand img { width: 28px; height: 28px; border-radius: 7px; }
+.nav-right { display: flex; align-items: center; gap: 14px; }
+.lang { display: flex; gap: 2px; background: #1c1c1e; border-radius: 999px; padding: 3px; }
+.lang button { font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; background: none; border: none; color: var(--text-2); border-radius: 999px; padding: 4px 10px; }
+.lang button[aria-pressed="true"] { background: #3a3a3c; color: #fff; }
+.pill { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; font-size: 14px; background: #fff; color: #000; border-radius: 999px; padding: 7px 16px; }
+
+/* ---------- Hero mit Scheinwerfer ---------- */
+.hero { position: relative; text-align: center; padding: clamp(56px, 9vw, 110px) 0 0; overflow: hidden; }
+.eyebrow { font-size: clamp(17px, 2vw, 21px); font-weight: 600; color: var(--state); transition: color 1s ease; margin-bottom: 14px; }
+.hero h1 {
+  font-size: clamp(48px, 9vw, 112px); line-height: 1.02; letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #fff 30%, #9a9aa0 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-@media (prefers-reduced-motion: reduce) { .screen { transition: none; } }
+.hero .sub { font-size: clamp(19px, 2.2vw, 26px); color: var(--text-2); max-width: 30em; margin: 22px auto 0; line-height: 1.35; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 34px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 17px; border-radius: 999px; padding: 14px 26px; }
+.btn.white { background: #fff; color: #000; }
+.btn.white small { display: block; font-size: 11px; font-weight: 500; opacity: 0.7; line-height: 1; }
+.btn.white span { text-align: left; line-height: 1.15; }
+.btn.ghost { color: #2997ff; padding-left: 8px; padding-right: 8px; }
+.btn.ghost::after { content: "›"; font-size: 22px; line-height: 1; }
+
+.stage { position: relative; height: clamp(620px, 74vw, 820px); margin-top: 24px; }
+/* Lichtkegel von oben */
+.spot {
+  position: absolute; left: 50%; top: -40px; width: min(900px, 140vw); height: 100%; transform: translateX(-50%);
+  background:
+    radial-gradient(ellipse 22% 70% at 50% 0%, rgba(255,255,255,0.20), transparent 75%),
+    radial-gradient(ellipse 42% 95% at 50% 0%, rgba(255,255,255,0.09), transparent 80%);
+  pointer-events: none;
+  animation: flicker 7s ease-in-out infinite;
+}
+@keyframes flicker { 0%, 100% { opacity: 0.95; } 50% { opacity: 0.8; } }
+/* farbiger Schein unter dem Gerät */
+.glow {
+  position: absolute; left: 50%; bottom: 40px; width: 520px; height: 140px; transform: translateX(-50%);
+  background: radial-gradient(closest-side, var(--state), transparent); opacity: 0.55; filter: blur(30px);
+  transition: background 1s ease;
+}
+.floor { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: linear-gradient(180deg, transparent, #000 70%); }
+
+/* iPhone */
+.phone {
+  position: absolute; left: 50%; top: 40px; width: clamp(250px, 26vw, 300px); aspect-ratio: 9 / 19.3; transform: translateX(-50%);
+  border-radius: 54px; padding: 11px; background: linear-gradient(145deg, #3a3a3c, #0d0d0f 40%, #2c2c2e);
+  box-shadow: 0 0 0 1.5px #48484a inset, 0 50px 100px -30px rgba(0,0,0,0.9), 0 0 80px -20px var(--state);
+  animation: float 6s ease-in-out infinite; transition: box-shadow 1s ease;
+}
+@keyframes float { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -12px); } }
+.screen {
+  position: relative; height: 100%; border-radius: 44px; overflow: hidden; background: var(--state); transition: background-color 1s ease;
+  display: flex; flex-direction: column; color: #fff; text-align: center;
+}
+.island { position: absolute; top: 10px; left: 50%; width: 32%; height: 24px; transform: translateX(-50%); background: #000; border-radius: 20px; z-index: 2; }
+.statusbar { display: flex; justify-content: space-between; padding: 14px 24px 0; font-size: 12px; font-weight: 600; }
+.screen-top { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 16px; }
+.s-label { font-size: 12px; opacity: 0.85; }
+.s-amount { font: 700 clamp(36px, 4vw, 44px)/1.05 var(--rounded); font-variant-numeric: tabular-nums; margin: 4px 0; letter-spacing: -0.01em; }
+.s-of { font-size: 11px; opacity: 0.85; }
+.s-status { align-self: center; margin-top: 14px; font-size: 11px; font-weight: 600; background: rgba(255,255,255,0.22); padding: 5px 12px; border-radius: 999px; }
+.keys { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; padding: 0 14px 22px; }
+.keys span { background: rgba(255,255,255,0.18); border-radius: 12px; height: 34px; display: flex; align-items: center; justify-content: center; font: 600 15px var(--rounded); }
+.keys span.ok { background: #fff; color: var(--state); transition: color 1s ease; }
+
+/* ---------- Abschnitte ---------- */
+section { padding: clamp(90px, 12vw, 160px) 0; }
+.center { text-align: center; }
+.big { font-size: clamp(40px, 6.5vw, 80px); line-height: 1.05; letter-spacing: -0.035em; }
+.big .muted { color: var(--text-3); }
+.intro { font-size: clamp(19px, 2vw, 24px); color: var(--text-2); max-width: 32em; line-height: 1.4; margin-top: 22px; }
+.center .intro { margin-left: auto; margin-right: auto; }
+
+/* Ampel */
+.lights { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 3vw, 40px); margin-top: 72px; }
+.light { text-align: center; }
+.orb { width: clamp(84px, 11vw, 140px); aspect-ratio: 1; border-radius: 50%; margin: 0 auto 22px; background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.45), transparent 45%), var(--c); box-shadow: 0 0 60px -6px var(--c), 0 0 140px -30px var(--c); }
+.light h3 { font-size: 24px; margin-bottom: 6px; }
+.light p { color: var(--text-2); font-size: 16px; max-width: 14em; margin: 0 auto; }
+
+/* Tippen */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 100px); align-items: center; }
+.pad {
+  justify-self: center; width: min(360px, 100%); border-radius: 36px; padding: 28px 22px 24px;
+  background: linear-gradient(180deg, #1c1c1e, #0e0e10); border: 1px solid #2c2c2e; box-shadow: 0 40px 80px -40px rgba(0,166,82,0.5);
+}
+.pad .display { font: 700 54px/1 var(--rounded); text-align: right; padding: 10px 8px 22px; font-variant-numeric: tabular-nums; min-height: 76px; }
+.pad .display .cur { color: var(--text-3); font-size: 34px; margin-left: 6px; }
+.pad .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.pad .grid span { height: 58px; border-radius: 18px; background: #2c2c2e; display: flex; align-items: center; justify-content: center; font: 600 24px var(--rounded); transition: background 0.15s; }
+.pad .grid span.hit { background: #48484a; }
+.pad .grid span.ok { background: var(--green); color: #fff; }
+.pad .grid span.ok.hit { background: #2bd17a; }
+
+/* Privat */
+.no-list { list-style: none; padding: 0; margin: 48px 0 0; font-size: clamp(34px, 5.5vw, 64px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
+.no-list li { color: var(--text-3); transition: color 0.6s ease; }
+.no-list li.in { color: var(--text); }
+.no-list li em { font-style: normal; background: linear-gradient(90deg, #30d158, #64d2ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* Kacheln */
+.bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; margin-top: 64px; }
+.tile { background: var(--card); border: 1px solid #1f1f22; border-radius: 30px; padding: 34px; grid-column: span 2; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; }
+.tile.wide { grid-column: span 3; }
+.tile .ico { position: absolute; top: 30px; left: 34px; font-size: 34px; }
+.tile h3 { font-size: 24px; margin-bottom: 8px; }
+.tile p { color: var(--text-2); font-size: 16px; }
+.tile.hl::before { content: ""; position: absolute; inset: auto -30% -60% -30%; height: 80%; background: radial-gradient(closest-side, rgba(0,166,82,0.35), transparent); }
+
+/* FAQ */
+.faq { max-width: 820px; margin: 48px auto 0; }
+.faq details { border-bottom: 1px solid #2c2c2e; padding: 22px 0; }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; font-size: 20px; font-weight: 600; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--text-2); font-weight: 400; font-size: 26px; line-height: 1; transition: transform 0.2s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--text-2); margin-top: 12px; max-width: 40em; }
+
+/* Abschluss */
+.finale { text-align: center; position: relative; overflow: hidden; }
+.finale::before { content: ""; position: absolute; left: 50%; top: 10%; width: 600px; height: 600px; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(0,166,82,0.28), transparent); filter: blur(10px); }
+.finale > * { position: relative; }
+.app-icon { width: 128px; height: 128px; border-radius: 30px; margin: 0 auto 32px; box-shadow: 0 30px 60px -20px rgba(0,166,82,0.6); }
+.finale .support { margin-top: 40px; color: var(--text-2); font-size: 15px; }
+.finale .support a { color: #2997ff; text-decoration: none; }
+
+footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--text-3); font-size: 13px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
+footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
+footer a { color: var(--text-2); text-decoration: none; }
+footer a:hover { color: var(--text); }
+
+/* Einblenden beim Scrollen (nur mit JavaScript, sonst sofort sichtbar) */
+.js .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1); }
+.js .reveal.in { opacity: 1; transform: none; }
+.js .reveal.d1 { transition-delay: 0.12s; } .js .reveal.d2 { transition-delay: 0.24s; } .js .reveal.d3 { transition-delay: 0.36s; }
+
+@media (max-width: 900px) {
+  .lights { grid-template-columns: 1fr 1fr; row-gap: 48px; }
+  .split { grid-template-columns: 1fr; text-align: center; }
+  .split .intro { margin-left: auto; margin-right: auto; }
+  .bento { grid-template-columns: 1fr 1fr; }
+  .tile, .tile.wide { grid-column: span 1; }
+}
+@media (max-width: 600px) {
+  .nav .pill { display: none; }
+  .bento { grid-template-columns: 1fr; }
+  .tile { min-height: 200px; }
+  .glow { width: 320px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .phone, .spot { animation: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+}
 </style>
 </head>
 <body>
@@ -154,12 +220,15 @@ html[lang="de"] [lang="en"], html[lang="en"] [lang="de"] { display: none !import
   </div>
 </div>
 
-<header>
+<header class="nav">
   <div class="wrap">
     <a class="brand" href="./"><img src="icon.png" alt="">bubli</a>
-    <div class="lang" role="group" aria-label="Sprache / Language">
-      <button type="button" data-set-lang="de" aria-pressed="true">DE</button>
-      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-set-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="pill" href="#finale"><span lang="de">Bald verfügbar</span><span lang="en">Coming soon</span></a>
     </div>
   </div>
 </header>
@@ -168,116 +237,105 @@ html[lang="de"] [lang="en"], html[lang="en"] [lang="de"] { display: none !import
 
 <div class="hero">
   <div class="wrap">
-    <div>
-      <h1 lang="de">Dein Budget.<br><span>Auf einen Blick.</span></h1>
-      <h1 lang="en">Your budget.<br><span>At a glance.</span></h1>
-      <p class="lead" lang="de">bubli ist dein einfacher Budget-Begleiter. Du legst fest, wie viel du ausgeben möchtest – die Farbe des Bildschirms zeigt dir sofort, ob du im Plan bist.</p>
-      <p class="lead" lang="en">bubli is your simple budget companion. Decide how much you want to spend – the color of the screen instantly shows whether you are on track.</p>
-      <div class="badges">
-        <span class="badge" lang="de">Kein Konto</span><span class="badge" lang="en">No account</span>
-        <span class="badge" lang="de">Keine Werbung</span><span class="badge" lang="en">No ads</span>
-        <span class="badge" lang="de">Kein Abo</span><span class="badge" lang="en">No subscription</span>
-        <span class="badge" lang="de">Daten bleiben auf dem iPhone</span><span class="badge" lang="en">Data stays on your iPhone</span>
-      </div>
+    <p class="eyebrow reveal">bubli <span lang="de">für iPhone</span><span lang="en">for iPhone</span></p>
+    <h1 class="reveal d1" lang="de">Dein Budget.<br>Auf einen Blick.</h1>
+    <h1 class="reveal d1" lang="en">Your budget.<br>At a glance.</h1>
+    <p class="sub reveal d2" lang="de">Eine Farbe sagt dir alles. Du legst fest, wie viel du ausgeben möchtest – bubli zeigt dir in jedem Moment, ob du im Plan bist.</p>
+    <p class="sub reveal d2" lang="en">One color tells you everything. Decide how much you want to spend – bubli shows you at every moment whether you are on track.</p>
+    <div class="ctas reveal d3">
       <!-- Sobald die App im App Store ist: href auf den App-Store-Link setzen. -->
-      <a class="cta" href="#faq">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.4-3.66ZM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.66 1.37-.58.67-1.09 1.76-.96 2.8 1.02.08 2.05-.51 2.68-1.28Z"/></svg>
+      <a class="btn white" href="#finale">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.4-3.66ZM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.66 1.37-.58.67-1.09 1.76-.96 2.8 1.02.08 2.05-.51 2.68-1.28Z"/></svg>
         <span><small lang="de">Bald im</small><small lang="en">Coming soon to the</small>App Store</span>
       </a>
+      <a class="btn ghost" href="#ampel"><span lang="de">So funktioniert’s</span><span lang="en">How it works</span></a>
     </div>
+  </div>
 
-    <div class="phone" aria-hidden="true">
-      <div class="screen" id="screen">
-        <div class="label" lang="de">Noch verfügbar</div>
-        <div class="label" lang="en">Available</div>
-        <div class="amount" id="amount">412,50 €</div>
-        <div class="of" lang="de">von 800 € Budget</div>
-        <div class="of" lang="en">of €800 budget</div>
-        <div class="status" id="status-de" lang="de">Alles im Plan</div>
-        <div class="status" id="status-en" lang="en">On track</div>
+  <div class="stage" aria-hidden="true">
+    <div class="spot"></div>
+    <div class="glow"></div>
+    <div class="phone">
+      <div class="screen">
+        <div class="island"></div>
+        <div class="statusbar"><span>9:41</span><span>●●●</span></div>
+        <div class="screen-top">
+          <div class="s-label" lang="de">Noch verfügbar</div>
+          <div class="s-label" lang="en">Available</div>
+          <div class="s-amount" id="amount">412,50 €</div>
+          <div class="s-of" lang="de">von 800 € Budget</div>
+          <div class="s-of" lang="en">of €800 budget</div>
+          <div class="s-status" id="status">Alles im Plan</div>
+        </div>
+        <div class="keys"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>,</span><span>0</span><span class="ok">✓</span></div>
       </div>
     </div>
+    <div class="floor"></div>
   </div>
 </div>
 
-<section class="soft">
-  <div class="wrap">
-    <h2 lang="de">So einfach wie möglich</h2>
-    <h2 lang="en">As simple as possible</h2>
-    <p class="sub" lang="de">Keine Kategorien, keine Diagramme, keine Bankverbindung. Nur dein Budget und das, was du ausgibst.</p>
-    <p class="sub" lang="en">No categories, no charts, no bank connection. Just your budget and what you spend.</p>
-    <div class="grid">
-      <div class="card">
-        <div class="ico">🚦</div>
-        <h3 lang="de">Auf einen Blick</h3><h3 lang="en">See at a glance</h3>
-        <p lang="de">Die Farbe zeigt dir, ob du im Plan bist – ganz ohne Rechnen.</p>
-        <p lang="en">The color shows whether you are on track – no math required.</p>
-      </div>
-      <div class="card">
-        <div class="ico">👆</div>
-        <h3 lang="de">In Sekunden erfasst</h3><h3 lang="en">Record in seconds</h3>
-        <p lang="de">Betrag tippen, ✓ drücken – fertig. Auch per Siri oder Widget.</p>
-        <p lang="en">Type the amount, tap ✓ – done. Also via Siri or the widget.</p>
-      </div>
-      <div class="card">
-        <div class="ico">🔒</div>
-        <h3 lang="de">Privat</h3><h3 lang="en">Private</h3>
-        <p lang="de">Kein Konto, kein Server, kein Tracking. Deine Daten gehören dir.</p>
-        <p lang="en">No account, no server, no tracking. Your data belongs to you.</p>
-      </div>
-      <div class="card">
-        <div class="ico">📅</div>
-        <h3 lang="de">Dein Zeitraum</h3><h3 lang="en">Your period</h3>
-        <p lang="de">Monatlich ab deinem Gehaltstag – oder eigene Zeiträume, z. B. für den Urlaub.</p>
-        <p lang="en">Monthly from your payday – or custom periods, e.g. for a vacation.</p>
-      </div>
-      <div class="card">
-        <div class="ico">🕘</div>
-        <h3 lang="de">Rückblick</h3><h3 lang="en">Overview</h3>
-        <p lang="de">Sieh dir vergangene Zeiträume und alle Buchungen an.</p>
-        <p lang="en">Look back at past periods and all your bookings.</p>
-      </div>
-      <div class="card">
-        <div class="ico">💾</div>
-        <h3 lang="de">Backup &amp; CSV</h3><h3 lang="en">Backup &amp; CSV</h3>
-        <p lang="de">Sichere deine Daten selbst – auf dem iPhone oder in iCloud Drive.</p>
-        <p lang="en">Back up your data yourself – on your iPhone or in iCloud Drive.</p>
-      </div>
+<section id="ampel">
+  <div class="wrap center">
+    <h2 class="big reveal" lang="de">Eine Farbe.<br><span class="muted">Alles gesagt.</span></h2>
+    <h2 class="big reveal" lang="en">One color.<br><span class="muted">Says it all.</span></h2>
+    <p class="intro reveal d1" lang="de">bubli verteilt dein Budget gleichmäßig auf alle Tage und vergleicht es mit deinen Ausgaben. Kein Rechnen, keine Tabellen – du siehst es einfach.</p>
+    <p class="intro reveal d1" lang="en">bubli spreads your budget evenly across all days and compares it with your spending. No math, no spreadsheets – you simply see it.</p>
+    <div class="lights">
+      <div class="light reveal" style="--c: var(--green)"><div class="orb"></div><h3 lang="de">Grün</h3><h3 lang="en">Green</h3><p lang="de">Alles im Plan.</p><p lang="en">Everything is on track.</p></div>
+      <div class="light reveal d1" style="--c: var(--yellow)"><div class="orb"></div><h3 lang="de">Gelb</h3><h3 lang="en">Yellow</h3><p lang="de">Etwas zu viel – bis 10 % über dem Plan.</p><p lang="en">A little too much – up to 10 % over plan.</p></div>
+      <div class="light reveal d2" style="--c: var(--red)"><div class="orb"></div><h3 lang="de">Rot</h3><h3 lang="en">Red</h3><p lang="de">Deutlich zu viel ausgegeben.</p><p lang="en">Clearly too much spent.</p></div>
+      <div class="light reveal d3" style="--c: var(--gray)"><div class="orb"></div><h3 lang="de">Grau</h3><h3 lang="en">Gray</h3><p lang="de">Das Budget ist aufgebraucht.</p><p lang="en">The budget is used up.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div>
+      <h2 class="big reveal" lang="de">Tippen.<br>Haken.<br><span class="muted">Fertig.</span></h2>
+      <h2 class="big reveal" lang="en">Type.<br>Tap.<br><span class="muted">Done.</span></h2>
+      <p class="intro reveal d1" lang="de">Eine Ausgabe ist in zwei Sekunden erfasst. Betrag eintippen, ✓ drücken – mehr nicht. Auch per Siri, Kurzbefehl oder direkt vom Widget.</p>
+      <p class="intro reveal d1" lang="en">An expense is recorded in two seconds. Type the amount, tap ✓ – that’s it. Also via Siri, Shortcuts or right from the widget.</p>
+    </div>
+    <div class="pad reveal d1" aria-hidden="true">
+      <div class="display"><span id="typed">0,00</span><span class="cur">€</span></div>
+      <div class="grid" id="padgrid"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>,</span><span>0</span><span class="ok">✓</span></div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2 lang="de">So funktioniert die Ampel</h2>
-    <h2 lang="en">How the traffic light works</h2>
-    <p class="sub" lang="de">bubli verteilt dein Budget gleichmäßig auf alle Tage des Zeitraums und vergleicht es mit deinen Ausgaben.</p>
-    <p class="sub" lang="en">bubli spreads your budget evenly across all days of the period and compares it with your spending.</p>
-    <div class="lights">
-      <div class="light" style="background: var(--green)">
-        <h3 lang="de">Grün</h3><h3 lang="en">Green</h3>
-        <p lang="de">Alles im Plan.</p><p lang="en">Everything is on track.</p>
-      </div>
-      <div class="light" style="background: var(--yellow)">
-        <h3 lang="de">Gelb</h3><h3 lang="en">Yellow</h3>
-        <p lang="de">Etwas zu viel – bis 10 % über dem Plan.</p><p lang="en">A little too much – up to 10 % over plan.</p>
-      </div>
-      <div class="light" style="background: var(--red)">
-        <h3 lang="de">Rot</h3><h3 lang="en">Red</h3>
-        <p lang="de">Deutlich zu viel ausgegeben.</p><p lang="en">Clearly too much spent.</p>
-      </div>
-      <div class="light" style="background: var(--gray)">
-        <h3 lang="de">Grau</h3><h3 lang="en">Gray</h3>
-        <p lang="de">Das Budget ist aufgebraucht.</p><p lang="en">The budget is used up.</p>
-      </div>
+    <h2 class="big reveal" lang="de">Privat.<br><span class="muted">Wirklich privat.</span></h2>
+    <h2 class="big reveal" lang="en">Private.<br><span class="muted">Truly private.</span></h2>
+    <ul class="no-list" id="nolist">
+      <li lang="de">Kein Konto.</li><li lang="en">No account.</li>
+      <li lang="de">Keine Werbung.</li><li lang="en">No ads.</li>
+      <li lang="de">Kein Abo.</li><li lang="en">No subscription.</li>
+      <li lang="de">Kein Tracking.</li><li lang="en">No tracking.</li>
+      <li lang="de"><em>Deine Daten bleiben auf deinem iPhone.</em></li><li lang="en"><em>Your data stays on your iPhone.</em></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="big reveal center" lang="de">Klein. Durchdacht.<br><span class="muted">Und genau richtig.</span></h2>
+    <h2 class="big reveal center" lang="en">Small. Thoughtful.<br><span class="muted">And just right.</span></h2>
+    <div class="bento">
+      <div class="tile wide hl reveal"><span class="ico">📱</span><h3 lang="de">Widget</h3><h3 lang="en">Widget</h3><p lang="de">Dein Budget-Stand auf dem Home- und Sperrbildschirm – ohne die App zu öffnen.</p><p lang="en">Your budget on the Home and Lock Screen – without opening the app.</p></div>
+      <div class="tile wide reveal d1"><span class="ico">🎙️</span><h3 lang="de">Siri &amp; Kurzbefehle</h3><h3 lang="en">Siri &amp; Shortcuts</h3><p lang="de">Sag Siri einfach, was du ausgegeben hast – erfasst, während du noch an der Kasse stehst.</p><p lang="en">Just tell Siri what you spent – recorded while you’re still at the checkout.</p></div>
+      <div class="tile reveal"><span class="ico">📅</span><h3 lang="de">Dein Zeitraum</h3><h3 lang="en">Your period</h3><p lang="de">Monatlich ab dem Gehaltstag – oder eigene Zeiträume für Urlaub und Events.</p><p lang="en">Monthly from payday – or custom periods for trips and events.</p></div>
+      <div class="tile reveal d1"><span class="ico">🕘</span><h3 lang="de">Rückblick</h3><h3 lang="en">Overview</h3><p lang="de">Alle vergangenen Zeiträume und Buchungen auf einen Blick.</p><p lang="en">All past periods and bookings at a glance.</p></div>
+      <div class="tile reveal d2"><span class="ico">💾</span><h3 lang="de">Backup &amp; CSV</h3><h3 lang="en">Backup &amp; CSV</h3><p lang="de">Sichere deine Daten selbst – auf dem iPhone oder in iCloud Drive.</p><p lang="en">Back up your data yourself – on your iPhone or in iCloud Drive.</p></div>
     </div>
   </div>
 </section>
 
-<section class="soft" id="faq">
+<section id="faq">
   <div class="wrap">
-    <h2 lang="de">Häufige Fragen</h2>
-    <h2 lang="en">FAQ</h2>
+    <h2 class="big reveal center" lang="de">Fragen?</h2>
+    <h2 class="big reveal center" lang="en">Questions?</h2>
     <div class="faq">
       <details>
         <summary><span lang="de">Wo sind meine Daten gespeichert?</span><span lang="en">Where is my data stored?</span></summary>
@@ -308,14 +366,14 @@ html[lang="de"] [lang="en"], html[lang="en"] [lang="de"] { display: none !import
   </div>
 </section>
 
-<section id="support">
+<section class="finale" id="finale">
   <div class="wrap">
-    <h2 lang="de">Support &amp; Kontakt</h2>
-    <h2 lang="en">Support &amp; Contact</h2>
-    <p class="sub" lang="de">Fragen, Ideen oder ein Fehler gefunden? Schreib mir einfach.</p>
-    <p class="sub" lang="en">Questions, ideas or found a bug? Just write to me.</p>
-    <!-- E-Mail-Adresse eintragen (dieselbe wie AppInfo.supportEmail). -->
-    <a class="cta" href="mailto:info@bathke.me">✉️ info@bathke.me</a>
+    <img class="app-icon reveal" src="icon.png" alt="App-Symbol von bubli" width="256" height="256">
+    <h2 class="big reveal d1" lang="de">bubli.<br><span class="muted">Bald im App Store.</span></h2>
+    <h2 class="big reveal d1" lang="en">bubli.<br><span class="muted">Coming soon to the App Store.</span></h2>
+    <p class="intro reveal d2" lang="de">Dein Budget. Auf einen Blick. Für jeden Tag.</p>
+    <p class="intro reveal d2" lang="en">Your budget. At a glance. Every day.</p>
+    <p class="support" id="support"><span lang="de">Fragen, Ideen oder einen Fehler gefunden? Schreib mir:</span><span lang="en">Questions, ideas or found a bug? Write to me:</span> <a href="mailto:info@bathke.me">info@bathke.me</a></p>
   </div>
 </section>
 
@@ -323,13 +381,14 @@ html[lang="de"] [lang="en"], html[lang="en"] [lang="de"] { display: none !import
 
 <footer>
   <div class="wrap">
-    <span>© 2026 bubli · eine App von <a href="../" style="font-weight:600;text-decoration:none">Christian Bathke</a></span>
+    <span>© 2026 bubli · <span lang="de">eine App von</span><span lang="en">an app by</span> <a href="/">Christian Bathke</a></span>
     <nav>
       <a href="datenschutz.html" lang="de">Datenschutz</a>
       <a href="datenschutz.html#en" lang="en">Privacy Policy</a>
-      <a href="#support" lang="de">Support</a>
-      <a href="#support" lang="en">Support</a>
-      <a href="../">Christian Bathke</a>
+      <a href="#support">Support</a>
+      <a href="/impressum" lang="de">Impressum</a>
+      <a href="/impressum" lang="en">Legal notice</a>
+      <a href="/apps"><span lang="de">Alle Apps</span><span lang="en">All apps</span></a>
     </nav>
   </div>
 </footer>
@@ -337,6 +396,10 @@ html[lang="de"] [lang="en"], html[lang="en"] [lang="de"] { display: none !import
 <script>
 (function () {
   var root = document.documentElement;
+  root.classList.add("js");
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Sprache
   function setLang(lang) {
     root.lang = lang;
     document.querySelectorAll("[data-set-lang]").forEach(function (b) {
@@ -349,26 +412,64 @@ html[lang="de"] [lang="en"], html[lang="en"] [lang="de"] { display: none !import
     b.addEventListener("click", function () { setLang(b.dataset.setLang); });
   });
 
-  // Vorschau: Die Ampel wechselt alle paar Sekunden die Farbe.
+  // iPhone-Simulation: die Ampel wechselt die Farbe
   var states = [
-    { color: "var(--green)",  amount: 412.5, de: "Alles im Plan",       en: "On track" },
-    { color: "var(--yellow)", amount: 198.2, de: "Etwas zu viel",       en: "A little too much" },
-    { color: "var(--red)",    amount: 64.9,  de: "Deutlich zu viel",    en: "Clearly too much" },
-    { color: "var(--gray)",   amount: 0,     de: "Budget aufgebraucht", en: "Budget used up" }
+    { c: "var(--green)",  amount: 412.5, de: "Alles im Plan",       en: "On track" },
+    { c: "var(--yellow)", amount: 198.2, de: "Etwas zu viel",       en: "A little too much" },
+    { c: "var(--red)",    amount: 64.9,  de: "Deutlich zu viel",    en: "Clearly too much" },
+    { c: "var(--gray)",   amount: 0,     de: "Budget aufgebraucht", en: "Budget used up" }
   ];
   var i = 0;
+  function money(v) {
+    return root.lang === "de"
+      ? v.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €"
+      : "€" + v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
   function render() {
     var s = states[i];
-    var de = root.lang === "de";
-    document.getElementById("screen").style.background = s.color;
-    document.getElementById("amount").textContent = de
-      ? s.amount.toLocaleString("de-DE", { minimumFractionDigits: 2 }) + " €"
-      : "€" + s.amount.toLocaleString("en-US", { minimumFractionDigits: 2 });
-    document.getElementById("status-de").textContent = s.de;
-    document.getElementById("status-en").textContent = s.en;
+    root.style.setProperty("--state", s.c);
+    document.getElementById("amount").textContent = money(s.amount);
+    document.getElementById("status").textContent = root.lang === "de" ? s.de : s.en;
   }
-  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    setInterval(function () { i = (i + 1) % states.length; render(); }, 2600);
+  if (!reduce) setInterval(function () { i = (i + 1) % states.length; render(); }, 3000);
+
+  // Einblenden beim Scrollen
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+
+  // "Kein Konto. Keine Werbung. …" leuchtet nacheinander auf
+  var items = document.querySelectorAll("#nolist li");
+  var listIO = new IntersectionObserver(function (entries) {
+    if (!entries[0].isIntersecting) return;
+    listIO.disconnect();
+    items.forEach(function (li, n) { setTimeout(function () { li.classList.add("in"); }, reduce ? 0 : n * 260); });
+  }, { threshold: 0.3 });
+  listIO.observe(document.getElementById("nolist"));
+
+  // Ziffernblock tippt eine Ausgabe
+  var typed = document.getElementById("typed");
+  var keys = {};
+  document.querySelectorAll("#padgrid span").forEach(function (k) { keys[k.textContent] = k; });
+  var seq = ["4", ",", "9", "0", "✓"];
+  function press(k) { if (!keys[k]) return; keys[k].classList.add("hit"); setTimeout(function () { keys[k].classList.remove("hit"); }, 180); }
+  function typeLoop() {
+    var buf = "", n = 0;
+    typed.textContent = "0,00";
+    (function step() {
+      var k = seq[n++];
+      press(k);
+      if (k === "✓") { setTimeout(typeLoop, 2200); return; }
+      buf += k;
+      typed.textContent = root.lang === "de" ? buf : buf.replace(",", ".");
+      setTimeout(step, 420);
+    })();
+  }
+  if (reduce) { typed.textContent = "4,90"; }
+  else {
+    var padIO = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { padIO.disconnect(); setTimeout(typeLoop, 600); } }, { threshold: 0.4 });
+    padIO.observe(document.querySelector(".pad"));
   }
 
   var saved = null;
