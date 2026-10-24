@@ -104,8 +104,9 @@ html[lang="de"] [lang="en"], html[lang="en"] [lang="de"] { display: none !import
   animation: float 6s ease-in-out infinite; transition: box-shadow 1s ease;
 }
 @keyframes float { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -12px); } }
+/* Bildschirm an allen Seiten im Rahmen verankert – Safari löst "height: 100%" bei aspect-ratio sonst nicht auf */
 .screen {
-  position: relative; height: 100%; border-radius: 44px; overflow: hidden; background: var(--state); transition: background-color 1s ease;
+  position: absolute; inset: 11px; border-radius: 44px; overflow: hidden; background: var(--state); transition: background-color 1s ease;
   display: flex; flex-direction: column; color: #fff; text-align: center;
 }
 .island { position: absolute; top: 10px; left: 50%; width: 32%; height: 24px; transform: translateX(-50%); background: #000; border-radius: 20px; z-index: 2; }
@@ -115,8 +116,9 @@ html[lang="de"] [lang="en"], html[lang="en"] [lang="de"] { display: none !import
 .s-amount { font: 700 clamp(36px, 4vw, 44px)/1.05 var(--rounded); font-variant-numeric: tabular-nums; margin: 4px 0; letter-spacing: -0.01em; }
 .s-of { font-size: 11px; opacity: 0.85; }
 .s-status { align-self: center; margin-top: 14px; font-size: 11px; font-weight: 600; background: rgba(255,255,255,0.22); padding: 5px 12px; border-radius: 999px; }
-.keys { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; padding: 0 14px 22px; }
-.keys span { background: rgba(255,255,255,0.18); border-radius: 12px; height: 34px; display: flex; align-items: center; justify-content: center; font: 600 15px var(--rounded); }
+.keys { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 14px 20px; flex-shrink: 0; }
+.screen-top { min-height: 0; }
+.keys span { background: rgba(255,255,255,0.18); border-radius: 12px; height: clamp(26px, 3vw, 34px); display: flex; align-items: center; justify-content: center; font: 600 15px var(--rounded); }
 .keys span.ok { background: #fff; color: var(--state); transition: color 1s ease; }
 
 /* ---------- Abschnitte ---------- */
