@@ -9,3 +9,9 @@
     btn.textContent = open ? "Schließen" : "Menü";
   });
 })();
+
+// Kein Kontextmenü („Bild speichern“) auf dem Porträtfoto.
+document.querySelectorAll(".protected").forEach(function (el) {
+  el.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+  el.addEventListener("dragstart", function (e) { e.preventDefault(); });
+});
