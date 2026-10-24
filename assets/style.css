@@ -285,8 +285,43 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .book:first-child { border-top: none; padding-top: 0; }
 .book .meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
 .tag { font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--line); color: var(--text-2); }
+.coming-soon {
+  display: flex; gap: clamp(20px, 3vw, 40px); align-items: center;
+  margin: 48px 0 24px; padding: clamp(28px, 4vw, 56px);
+  border: 2px dashed var(--line); border-radius: 40px;
+  background: radial-gradient(60% 120% at 0% 50%, rgba(184,103,60,0.08), transparent 70%);
+}
+.coming-soon .eyebrow { margin-bottom: 8px; }
+.coming-soon h2 { margin-bottom: 8px; }
+.coming-soon p:not(.eyebrow) { color: var(--text-2); margin: 0; max-width: var(--measure); }
+.cs-dot { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--warm); box-shadow: 0 0 0 0 rgba(184,103,60,0.5); animation: pulse 2.4s ease-out infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(184,103,60,0.45); } 100% { box-shadow: 0 0 0 22px rgba(184,103,60,0); } }
+@media (prefers-reduced-motion: reduce) { .cs-dot { animation: none; } }
 .tag.tag-new { background: var(--warm); border-color: var(--warm); color: #fff; }
 .book p, .book blockquote, .card p, .split p, .steps p { max-width: var(--measure); }
+/* Cover abwechselnd links und rechts */
+.book:nth-of-type(even) { grid-template-columns: 1fr clamp(220px, 19vw, 360px); }
+.book:nth-of-type(even) > .cover { order: 2; }
+
+/* Händler-Auswahl */
+.shops { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 8px; }
+.shops-label { font-size: 14px; font-weight: 600; color: var(--text-2); margin-right: 4px; }
+.shop {
+  display: inline-flex; align-items: center; padding: 10px 18px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--text);
+  font-weight: 600; font-size: 15px; text-decoration: none; transition: border-color .2s, background .2s, color .2s;
+}
+.shop:hover { border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
+.pod-note { font-size: 14px; color: var(--text-2); margin: 10px 0 0; }
+.pod-box {
+  display: flex; gap: 16px; align-items: flex-start; margin-top: 28px; padding: 20px 24px;
+  border-radius: 24px; background: var(--accent-soft); color: var(--text);
+}
+.pod-box p { margin: 0; }
+.pod-icon {
+  flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--on-accent);
+  font: 700 16px/28px var(--serif); text-align: center; font-style: italic;
+}
 .book blockquote { margin: 18px 0 22px; padding-left: 18px; border-left: 3px solid var(--warm); font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--text); }
 
 .indie-badge {
@@ -485,6 +520,7 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
   .portrait { max-width: 360px; }
   .grid.three, .grid.four { grid-template-columns: repeat(2, 1fr); }
   .book { grid-template-columns: 180px 1fr; gap: 28px; }
+  .book:nth-of-type(even) { grid-template-columns: 1fr 180px; }
   .site-footer .cols { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 620px) {
@@ -492,6 +528,8 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
   .hero { padding: 40px 0 56px; }
   .grid.two, .grid.three, .grid.four { grid-template-columns: 1fr; }
   .book { grid-template-columns: 1fr; }
+  .book:nth-of-type(even) { grid-template-columns: 1fr; }
+  .book:nth-of-type(even) > .cover { order: 0; }
   .book .cover { max-width: 220px; }
   .cta-band { padding: 36px 24px; }
   .steps li { padding-left: 72px; }
