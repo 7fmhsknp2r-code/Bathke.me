@@ -15,8 +15,9 @@
   --todo-bg: #fff3c4;
   --todo-line: #d9a400;
   --radius: 24px;
-  --wrap: 1680px;
-  --gutter: clamp(20px, 6vw, 120px);
+  --wrap: none;
+  --gutter: clamp(20px, 5vw, 96px);
+  --measure: 72ch;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
@@ -44,20 +45,20 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 17px/1.6 var(--sans);
+  font: clamp(17px, 0.55vw + 10px, 21px)/1.65 var(--sans);
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; display: block; }
 a { color: var(--accent); }
 h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
-h1 { font-size: clamp(38px, 6vw, 62px); margin: 0 0 20px; }
-h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 14px; }
-h3 { font-size: 22px; margin: 0 0 8px; }
+h1 { font-size: clamp(38px, 4.6vw, 88px); margin: 0 0 20px; }
+h2 { font-size: clamp(28px, 3.1vw, 58px); margin: 0 0 14px; }
+h3 { font-size: clamp(21px, 1.25vw, 28px); margin: 0 0 8px; }
 p { margin: 0 0 14px; }
 
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
 /* Schmale Textblöcke stehen linksbündig im breiten Raster statt als Spalte in der Mitte */
-.wrap.narrow > * { max-width: 860px; }
+.wrap.narrow > * { max-width: var(--measure); }
 
 /* Platzhalter – gut sichtbar, damit nichts vergessen wird */
 .todo {
@@ -122,7 +123,7 @@ p { margin: 0 0 14px; }
 .hero { padding: 72px 0 80px; }
 .hero .wrap { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 56px; align-items: center; }
 .eyebrow { font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm); margin: 0 0 14px; }
-.lead { font-size: 20px; color: var(--text-2); max-width: 34em; margin-bottom: 30px; }
+.lead { font-size: clamp(19px, 0.8vw + 11px, 27px); color: var(--text-2); max-width: var(--measure); margin-bottom: 30px; }
 .portrait {
   aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden;
   background: linear-gradient(160deg, var(--accent-soft), var(--bg-soft));
@@ -158,7 +159,7 @@ p { margin: 0 0 14px; }
 }
 .stage .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: center; }
 .stage .eyebrow { color: #e0946a; }
-.stage h1 { color: #ffffff; font-size: clamp(42px, 6.2vw, 76px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 24px; }
+.stage h1 { color: #ffffff; font-size: clamp(42px, 5.4vw, 108px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 24px; }
 .stage h1 em { font-style: italic; color: #8fd1c7; }
 .stage .lead { color: rgba(243,241,236,0.82); }
 .stage .btn { background: #8fd1c7; border-color: #8fd1c7; color: #0f1715; }
@@ -173,13 +174,13 @@ p { margin: 0 0 14px; }
 .trustbar { position: relative; z-index: 2; margin-top: -80px; padding-bottom: 24px; }
 .trustbar .wrap {
   display: grid; grid-template-columns: repeat(4, 1fr);
-  max-width: calc(var(--wrap) - 2 * 120px); width: calc(100% - 2 * var(--gutter)); padding: 8px clamp(20px, 3vw, 40px);
+  width: calc(100% - 2 * var(--gutter)); padding: 8px clamp(20px, 3vw, 48px);
   background: var(--surface); border-radius: 28px; box-shadow: 0 30px 60px -34px rgba(0,0,0,0.45);
 }
 .trustbar .wrap > div { padding: 26px 20px; border-left: 1px solid var(--line); }
 .trustbar .wrap > div:first-child { border-left: none; padding-left: 0; }
-.trustbar strong { display: block; font-family: var(--serif); font-size: 22px; color: var(--accent); }
-.trustbar span { font-size: 14px; color: var(--text-2); }
+.trustbar strong { display: block; font-family: var(--serif); font-size: clamp(20px, 1.4vw, 30px); color: var(--accent); }
+.trustbar span { font-size: clamp(14px, 0.5vw + 8px, 17px); color: var(--text-2); }
 
 /* Porträtfoto: Speichern, Herausziehen und langes Antippen erschweren */
 .protected img {
@@ -220,8 +221,8 @@ section.soft {
   border-radius: clamp(32px, 5vw, 64px);
   margin: 0 clamp(8px, 1.5vw, 20px);
 }
-.section-head { max-width: 40em; margin-bottom: 40px; }
-.section-head p { color: var(--text-2); font-size: 18px; }
+.section-head { max-width: var(--measure); margin-bottom: clamp(40px, 3vw, 64px); }
+.section-head p { color: var(--text-2); font-size: clamp(18px, 0.6vw + 10px, 23px); }
 .section-head p.eyebrow { color: var(--warm); font-size: 14px; }
 
 .grid { display: grid; gap: 20px; }
@@ -280,11 +281,12 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .book-tile h3 { font-size: 20px; margin-bottom: 4px; }
 .book-tile p { color: var(--text-2); font-size: 15px; margin: 0; }
 
-.book { display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; padding: 48px 0; border-top: 1px solid var(--line); }
+.book { display: grid; grid-template-columns: clamp(220px, 19vw, 360px) 1fr; gap: 48px; align-items: start; padding: 48px 0; border-top: 1px solid var(--line); }
 .book:first-child { border-top: none; padding-top: 0; }
 .book .meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
 .tag { font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--line); color: var(--text-2); }
 .tag.tag-new { background: var(--warm); border-color: var(--warm); color: #fff; }
+.book p, .book blockquote, .card p, .split p, .steps p { max-width: var(--measure); }
 .book blockquote { margin: 18px 0 22px; padding-left: 18px; border-left: 3px solid var(--warm); font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--text); }
 
 .indie-badge {
@@ -336,7 +338,7 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .faq details p { margin: 12px 0 0; color: var(--text-2); }
 
 /* ---------- Zitat ---------- */
-.quote { font-family: var(--serif); font-size: clamp(24px, 3.2vw, 34px); line-height: 1.35; text-align: center; max-width: 30em; margin: 0 auto; }
+.quote { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 50px); line-height: 1.3; text-align: center; max-width: 32em; margin: 0 auto; }
 .quote cite { display: block; margin-top: 18px; font-family: var(--sans); font-style: normal; font-size: 15px; color: var(--text-2); }
 
 /* ---------- Kontakt-Band ---------- */
@@ -450,7 +452,7 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
   background: radial-gradient(70% 90% at 15% 0%, rgba(255,255,255,0.14), transparent 60%), radial-gradient(60% 80% at 90% 100%, rgba(224,148,106,0.28), transparent 65%), var(--accent);
 }
 .vision .eyebrow { color: var(--on-accent); opacity: 0.8; }
-.vision-text { font-family: var(--serif); font-size: clamp(28px, 4.2vw, 46px); line-height: 1.25; max-width: 22em; margin: 0 auto; }
+.vision-text { font-family: var(--serif); font-size: clamp(28px, 3.4vw, 66px); line-height: 1.2; max-width: 24em; margin: 0 auto; }
 
 @media (max-width: 900px) {
   .palette.thread { grid-template-columns: 1fr 1fr; }

@@ -37,7 +37,7 @@ html { scroll-behavior: smooth; }
 body { margin: 0; background: #000; color: var(--text); font: 17px/1.5 var(--display); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 a { color: inherit; }
 img { display: block; max-width: 100%; }
-.wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
+.wrap { max-width: 1680px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 96px); }
 h1, h2, h3 { margin: 0; letter-spacing: -0.025em; font-weight: 700; }
 p { margin: 0; }
 
@@ -128,6 +128,19 @@ section { padding: clamp(90px, 12vw, 160px) 0; }
 .big .muted { color: var(--text-3); }
 .intro { font-size: clamp(19px, 2vw, 24px); color: var(--text-2); max-width: 32em; line-height: 1.4; margin-top: 22px; }
 .center .intro { margin-left: auto; margin-right: auto; }
+
+/* Breite Bildschirme: Text links, iPhone rechts */
+@media (min-width: 1000px) {
+  .hero { text-align: left; padding-top: clamp(32px, 4vw, 64px); }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(24px, 4vw, 80px); align-items: center; }
+  .hero h1 { font-size: clamp(56px, 6.4vw, 120px); }
+  .hero .sub { margin-left: 0; }
+  .hero .ctas { justify-content: flex-start; }
+  .hero .btn.ghost { padding-left: 4px; }
+  .stage { margin-top: 0; height: min(calc(100vh - 120px), 52vw, 860px); min-height: 600px; }
+  .phone { top: 24px; height: calc(100% - 48px); width: auto; }
+  .floor { display: none; }
+}
 
 /* Ampel */
 .lights { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 3vw, 40px); margin-top: 72px; }
@@ -238,7 +251,8 @@ footer a:hover { color: var(--text); }
 <main>
 
 <div class="hero">
-  <div class="wrap">
+  <div class="wrap hero-grid">
+  <div class="hero-text">
     <p class="eyebrow reveal">bubli <span lang="de">für iPhone</span><span lang="en">for iPhone</span></p>
     <h1 class="reveal d1" lang="de">Dein Budget.<br>Auf einen Blick.</h1>
     <h1 class="reveal d1" lang="en">Your budget.<br>At a glance.</h1>
@@ -273,6 +287,7 @@ footer a:hover { color: var(--text); }
       </div>
     </div>
     <div class="floor"></div>
+  </div>
   </div>
 </div>
 
