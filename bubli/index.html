@@ -171,9 +171,11 @@ section { padding: clamp(90px, 12vw, 160px) 0; }
 
 /* Kacheln */
 .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; margin-top: 64px; }
-.tile { background: var(--card); border: 1px solid #1f1f22; border-radius: 30px; padding: 34px; grid-column: span 2; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; }
+.tile { background: var(--card); border: 1px solid #1f1f22; border-radius: 30px; padding: 34px; grid-column: span 2; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-start; position: relative; overflow: hidden; }
 .tile.wide { grid-column: span 3; }
-.tile .ico { position: absolute; top: 30px; left: 34px; font-size: 34px; }
+/* Symbol steht im normalen Fluss oben, der Text unten – sie können sich nicht überlagern */
+.tile .ico { position: relative; font-size: 34px; line-height: 1; margin-bottom: auto; padding-bottom: 28px; }
+.tile h3, .tile p { position: relative; }
 .tile h3 { font-size: 24px; margin-bottom: 8px; }
 .tile p { color: var(--text-2); font-size: 16px; }
 .tile.hl::before { content: ""; position: absolute; inset: auto -30% -60% -30%; height: 80%; background: radial-gradient(closest-side, rgba(0,166,82,0.35), transparent); }
