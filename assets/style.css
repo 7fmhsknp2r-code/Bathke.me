@@ -307,7 +307,7 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .book p, .book blockquote, .card p, .split p, .steps p { max-width: var(--measure); }
 /* Cover abwechselnd links und rechts */
 .book:nth-of-type(even) { grid-template-columns: 1fr clamp(220px, 19vw, 360px); }
-.book:nth-of-type(even) > .cover { order: 2; }
+.book:nth-of-type(even) > .cover, .book:nth-of-type(even) > a:first-child { order: 2; }
 
 /* Einzelne Buchseite */
 .breadcrumb { font-size: 15px; color: var(--text-2); }
@@ -559,7 +559,7 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
   .grid.two, .grid.three, .grid.four { grid-template-columns: 1fr; }
   .book { grid-template-columns: 1fr; }
   .book:nth-of-type(even) { grid-template-columns: 1fr; }
-  .book:nth-of-type(even) > .cover { order: 0; }
+  .book:nth-of-type(even) > .cover, .book:nth-of-type(even) > a:first-child { order: 0; }
   .book .cover { max-width: 220px; }
   .cta-band { padding: 36px 24px; }
   .steps li { padding-left: 72px; }
