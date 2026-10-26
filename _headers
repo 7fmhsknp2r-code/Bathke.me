@@ -12,3 +12,7 @@
   Cache-Control: public, max-age=0, must-revalidate
 /assets/site.js
   Cache-Control: public, max-age=0, must-revalidate
+
+# bubli-Seiten nur noch per Direktlink (App & App Store), nicht in Suchmaschinen
+/bubli/*
+  X-Robots-Tag: noindex
