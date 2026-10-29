@@ -156,10 +156,7 @@ h1 .kicker {
 /* ---------- Startseite: großer Auftritt ---------- */
 .stage {
   position: relative; overflow: hidden; color: #f3f1ec;
-  background:
-    radial-gradient(60% 80% at 85% 20%, rgba(111,181,172,0.35), transparent 60%),
-    radial-gradient(50% 60% at 10% 100%, rgba(224,148,106,0.22), transparent 60%),
-    #13201e;
+  background: #13201e;
   padding: 96px 0 150px;
   border-radius: 0 0 clamp(36px, 6vw, 80px) clamp(36px, 6vw, 80px);
 }
@@ -196,7 +193,7 @@ h1 .kicker {
 
 /* Sanftes Einblenden beim Laden */
 @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-.rise { animation: rise 0.8s cubic-bezier(.2,.7,.2,1) both; }
+.rise { animation: none; }
 .rise.d1 { animation-delay: 0.1s; }
 .rise.d2 { animation-delay: 0.25s; }
 .rise.d3 { animation-delay: 0.4s; }
@@ -220,10 +217,7 @@ h1 .kicker {
 /* ---------- Abschnitte ---------- */
 section { padding: 80px 0; }
 section.soft {
-  background:
-    radial-gradient(60% 80% at 0% 0%, rgba(47,111,106,0.08), transparent 70%),
-    radial-gradient(55% 75% at 100% 100%, rgba(184,103,60,0.09), transparent 70%),
-    var(--bg-soft);
+  background: var(--bg-soft);
   border-radius: clamp(32px, 5vw, 64px);
   margin: 0 clamp(8px, 1.5vw, 20px);
 }
@@ -245,12 +239,13 @@ section.soft {
 .card .link-arrow { margin-top: auto; }
 a.card { text-decoration: none; color: inherit; transition: transform 0.2s, border-color 0.2s; }
 a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
-.icon {
-  width: 48px; height: 48px; border-radius: 14px;
-  background: var(--accent-soft); color: var(--accent);
-  display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+/* Große Nummer statt Icon – redaktioneller Stil wie in einem Buch */
+.card-num {
+  display: block; font-family: var(--serif); font-size: clamp(38px, 3vw, 56px); line-height: 1;
+  color: var(--warm); margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--line);
+  font-variant-numeric: oldstyle-nums; transition: color 0.2s;
 }
-.icon svg { width: 24px; height: 24px; }
+a.card:hover .card-num { color: var(--accent); }
 
 /* Geteilter Abschnitt: Text + Bild/Box */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
@@ -258,10 +253,11 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 
 /* Häkchen-Liste */
 .checks { list-style: none; padding: 0; margin: 0 0 24px; }
-.checks li { position: relative; padding-left: 32px; margin-bottom: 10px; }
+.checks li { position: relative; padding-left: 30px; margin-bottom: 10px; }
+/* Schlichter Strich in Terrakotta statt Häkchen im Kreis */
 .checks li::before {
-  content: ""; position: absolute; left: 0; top: 4px; width: 20px; height: 20px; border-radius: 50%;
-  background: var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%232f6f6a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat;
+  content: ""; position: absolute; left: 0; top: 0.8em; width: 16px; height: 2px;
+  border-radius: 2px; background: var(--warm);
 }
 
 /* ---------- Bücher ---------- */
@@ -295,14 +291,11 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
   display: flex; gap: clamp(20px, 3vw, 40px); align-items: center;
   margin: 48px 0 24px; padding: clamp(28px, 4vw, 56px);
   border: 2px dashed var(--line); border-radius: 40px;
-  background: radial-gradient(60% 120% at 0% 50%, rgba(184,103,60,0.08), transparent 70%);
+  background: transparent;
 }
 .coming-soon .eyebrow { margin-bottom: 8px; }
 .coming-soon h2 { margin-bottom: 8px; }
 .coming-soon p:not(.eyebrow) { color: var(--text-2); margin: 0; max-width: var(--measure); }
-.cs-dot { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--warm); box-shadow: 0 0 0 0 rgba(184,103,60,0.5); animation: pulse 2.4s ease-out infinite; }
-@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(184,103,60,0.45); } 100% { box-shadow: 0 0 0 22px rgba(184,103,60,0); } }
-@media (prefers-reduced-motion: reduce) { .cs-dot { animation: none; } }
 .tag.tag-new { background: var(--warm); border-color: var(--warm); color: #fff; }
 .book p, .book blockquote, .card p, .split p, .steps p { max-width: var(--measure); }
 /* Cover abwechselnd links und rechts */
@@ -344,14 +337,10 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .shop:hover { border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
 .pod-note { font-size: 14px; color: var(--text-2); margin: 10px 0 0; }
 .pod-box {
-  display: flex; gap: 16px; align-items: flex-start; margin-top: 28px; padding: 20px 24px;
-  border-radius: 24px; background: var(--accent-soft); color: var(--text);
+  margin-top: 28px; padding: 18px 24px;
+  border-left: 3px solid var(--accent); border-radius: 0 16px 16px 0; background: var(--accent-soft); color: var(--text);
 }
 .pod-box p { margin: 0; }
-.pod-icon {
-  flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--on-accent);
-  font: 700 16px/28px var(--serif); text-align: center; font-style: italic;
-}
 .book blockquote { margin: 18px 0 22px; padding-left: 18px; border-left: 3px solid var(--warm); font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--text); }
 
 .indie-badge {
@@ -360,13 +349,13 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 }
 .indie {
   color: #f3f1ec; border-radius: clamp(32px, 5vw, 64px); margin: 0 clamp(8px, 1.5vw, 20px);
-  background: radial-gradient(60% 80% at 100% 0%, rgba(111,181,172,0.25), transparent 65%), #13201e;
+  background: #13201e;
 }
 .indie .eyebrow { color: #e0946a; }
 .indie h2 { color: #ffffff; }
 .indie p { color: rgba(243,241,236,0.82); }
 .indie .steps li { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
-.indie .steps li::before { background: #8fd1c7; color: #0f1715; }
+.indie .steps li::before { color: #e0946a; }
 .indie .steps h3 { color: #ffffff; }
 .indie .steps p { color: rgba(243,241,236,0.75); }
 
@@ -375,13 +364,12 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .steps li {
   counter-increment: step; position: relative;
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 22px 24px 22px 80px;
+  padding: 22px 24px 22px 84px;
 }
 .steps li::before {
-  content: counter(step); position: absolute; left: 24px; top: 22px;
-  width: 36px; height: 36px; border-radius: 50%;
-  background: var(--accent); color: var(--on-accent);
-  font-weight: 700; display: flex; align-items: center; justify-content: center;
+  content: counter(step, decimal-leading-zero); position: absolute; left: 24px; top: 16px;
+  font-family: var(--serif); font-size: 34px; line-height: 1; color: var(--warm);
+  font-variant-numeric: oldstyle-nums;
 }
 .steps h3 { font-size: 19px; font-family: var(--sans); font-weight: 650; margin-bottom: 4px; }
 .steps p { margin: 0; color: var(--text-2); }
@@ -407,16 +395,17 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .quote cite { display: block; margin-top: 18px; font-family: var(--sans); font-style: normal; font-size: 15px; color: var(--text-2); }
 
 /* ---------- Kontakt-Band ---------- */
-.cta-band { background: radial-gradient(70% 120% at 100% 0%, rgba(255,255,255,0.16), transparent 60%), var(--accent); color: var(--on-accent); border-radius: 40px; padding: 56px; display: flex; flex-wrap: wrap; gap: 28px; align-items: center; justify-content: space-between; }
+.cta-band { background: var(--accent); color: var(--on-accent); border-radius: 40px; padding: 56px; display: flex; flex-wrap: wrap; gap: 28px; align-items: center; justify-content: space-between; }
 .cta-band h2 { margin: 0 0 6px; }
 .cta-band p { margin: 0; opacity: 0.9; font-size: 18px; }
 .cta-band .btn { background: var(--on-accent); color: var(--accent); border-color: var(--on-accent); }
 
 /* Kontaktwege */
-.contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
-.contact-list li { display: flex; gap: 14px; align-items: flex-start; }
-.contact-list .icon { margin: 0; flex: none; }
-.contact-list strong { display: block; }
+.contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+.contact-list li { padding: 20px 0; border-top: 1px solid var(--line); }
+.contact-list li:first-child { border-top: none; padding-top: 4px; }
+.contact-list strong { display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm); margin-bottom: 6px; }
+.contact-list li > div { font-family: var(--serif); font-size: clamp(20px, 1.4vw, 26px); }
 
 /* bubli-Teaser */
 .app-teaser { display: flex; gap: 22px; align-items: center; }
@@ -466,12 +455,6 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .about-name { color: var(--text-2); font-size: 15px; margin-top: 28px; padding-left: 16px; border-left: 3px solid var(--warm); }
 .about-name strong { color: var(--text); font-size: 17px; }
 .about-photo { position: relative; margin: 0; justify-self: center; width: 100%; max-width: 300px; }
-/* Farbkleckse hinter dem Foto – ein Hinweis auf die kreative Seite */
-.about-photo::before, .about-photo::after {
-  content: ""; position: absolute; z-index: 0; border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%;
-}
-.about-photo::before { width: 70%; height: 55%; right: -14%; top: -7%; background: var(--accent); opacity: 0.85; }
-.about-photo::after { width: 46%; height: 34%; left: -12%; bottom: -6%; background: var(--warm); opacity: 0.85; }
 .about-photo img {
   position: relative; z-index: 1; width: 100%; height: auto;
   border-radius: 28px; box-shadow: 0 30px 60px -24px rgba(0,0,0,0.45);
@@ -514,7 +497,7 @@ a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 
 .vision {
   color: var(--on-accent); text-align: center; border-radius: clamp(32px, 5vw, 64px); margin: 0 clamp(8px, 1.5vw, 20px);
-  background: radial-gradient(70% 90% at 15% 0%, rgba(255,255,255,0.14), transparent 60%), radial-gradient(60% 80% at 90% 100%, rgba(224,148,106,0.28), transparent 65%), var(--accent);
+  background: var(--accent);
 }
 .vision .eyebrow { color: var(--on-accent); opacity: 0.8; }
 .vision-text { font-family: var(--serif); font-size: clamp(28px, 3.4vw, 66px); line-height: 1.2; max-width: 24em; margin: 0 auto; }
