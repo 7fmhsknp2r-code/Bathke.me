@@ -16,3 +16,5 @@
 # bubli-Seiten nur noch per Direktlink (App & App Store), nicht in Suchmaschinen
 /bubli/*
   X-Robots-Tag: noindex
+/assets/likes.js
+  Cache-Control: public, max-age=0, must-revalidate
