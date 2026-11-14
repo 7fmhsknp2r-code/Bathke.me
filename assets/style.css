@@ -580,3 +580,8 @@ a.card:hover .card-num { color: var(--accent); }
 .like-btn.small { padding: 6px 12px; font-size: 14px; }
 .like-btn.small svg { width: 16px; height: 16px; }
 @media (max-width: 760px) { .bik-steps { grid-template-columns: 1fr; } }
+.bik-home { display: grid; gap: 16px; }
+.bik-home.n1 { grid-template-columns: minmax(0, 420px); justify-content: center; }
+.bik-home.n2 { grid-template-columns: repeat(2, 1fr); }
+.bik-home.n3 { grid-template-columns: repeat(3, 1fr); }
+.bik-home .bik-card h3 { font-size: 17px; margin-top: 10px; }
