@@ -1,2 +1,6 @@
 /projekte.html /apps.html 301
 /projekte /apps 301
+/bubli/datenschutz.html https://tagestaler.com/datenschutz 301
+/bubli/datenschutz https://tagestaler.com/datenschutz 301
+/bubli/* https://tagestaler.com/ 301
+/bubli https://tagestaler.com/ 301
